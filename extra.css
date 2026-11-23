@@ -1,0 +1,13 @@
+#topbar { flex-wrap: wrap; padding-right: 4.2rem; }
+#search { margin-left: auto; width: 200px; min-width: 0; padding: 0.5rem 0.8rem; background: rgba(255,255,255,0.06); border: 1px solid #ffffff20; border-radius: 8px; color: #FFFDD0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; outline: none; }
+#search:focus { border-color: #FFFDD050; }
+#view-toggle, .settings-btns button { padding: 0.45rem 0.8rem; background: rgba(255,255,255,0.08); border: 1px solid #ffffff20; border-radius: 8px; color: #FFFDD0; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; cursor: pointer; transition: background 0.2s; }
+#view-toggle:hover, .settings-btns button:hover { background: rgba(255,255,255,0.15); }
+#modal-tags { background: transparent; border: none; border-top: 1px solid rgba(255,255,255,0.08); color: #FFFDD0; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; outline: none; padding: 0.6rem 0 0; opacity: 0.8; }
+.card-actions { display: flex; gap: 2px; flex-shrink: 0; }
+.note-preview .meta { font-size: 0.65rem; opacity: 0.3; }
+.empty { opacity: 0.4; padding: 1rem; }
+#settings-panel { max-height: 80vh; overflow-y: auto; }
+.settings-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+#sync-status { font-size: 0.7rem; opacity: 0.6; color: #FFFDD0; word-break: break-word; }
+@media (max-width: 520px) { #search { width: 100%; margin: 0; order: 5; } .clickable { width: 100%; box-sizing: border-box; } }
