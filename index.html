@@ -1,65 +1,77 @@
-<html>
-  <head>
-    <title>SoulNote - Your Local Notes App!</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/x-icon" href="icons/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="icons/favicon-32x32.png" sizes="32x32">
-  </head>
-  <body>
-    <div id="watermark">
-      <span>SoulNote</span>
-    </div>
-    <div id="topbar">
-      <img src="icons/favicon-32x32.png" alt="SoulNote icon" id="site-icon" />
-      <h1 id="brand">SoulNote<sup>Your local notes app!</sup></h1>
-    </div>
-    <div id="container"></div>
-    <div id="bottom-bar">
-      <button id="add-btn">+ New Note</button>
-      <footer id="footer">
-        <a href="https://github.com/alanbutidk" target="_blank">
-          <img src="https://github.com/favicon.ico" alt="GitHub" />
-          My Github Profile!
-        </a>
-        <a href="https://youtube.com/@Alancodes0" target="_blank">
-          <img src="https://www.youtube.com/favicon.ico" alt="YouTube" />
-          My Youtube Profile!
-        </a>
-      </footer>
-    </div>
-    <button id="settings-btn">⚙</button>
-    <div id="settings-panel">
-      <div class="settings-row">
-        <label>BG Color</label>
-        <input type="color" id="bg-color-picker" value="#1a2e35" />
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<meta name='theme-color' content='#1a2e35'>
+<title>SoulNote - Your Local Notes App!</title>
+<link rel='manifest' href='manifest.webmanifest'>
+<link rel='apple-touch-icon' href='icons/apple-touch-icon.png'>
+<link rel='stylesheet' href='styles.css'>
+<link rel='stylesheet' href='extra.css'>
+<link rel='icon' type='image/png' href='icons/favicon-16x16.png' sizes='16x16'>
+<link rel='icon' type='image/png' href='icons/favicon-32x32.png' sizes='32x32'>
+<script src='https://accounts.google.com/gsi/client' async defer></script>
+</head>
+<body>
+<div id='watermark'><span>SoulNote</span></div>
+<div id='topbar'>
+  <img src='icons/favicon-32x32.png' alt='SoulNote icon' id='site-icon'>
+  <h1 id='brand'>SoulNote<sup>Your local notes app!</sup></h1>
+  <input id='search' type='search' placeholder='Search...' spellcheck='false'>
+  <button id='view-toggle'>Trash</button>
+</div>
+<div id='container'></div>
+<div id='bottom-bar'>
+  <button id='add-btn'>+ New Note</button>
+  <footer id='footer'>
+    <a href='https://github.com/alanbutidk' target='_blank' rel='noopener'><img src='https://github.com/favicon.ico' alt='GitHub'>My Github Profile!</a>
+    <a href='https://youtube.com/@Alancodes0' target='_blank' rel='noopener'><img src='https://www.youtube.com/favicon.ico' alt='YouTube'>My Youtube Profile!</a>
+  </footer>
+</div>
+<button id='settings-btn'>⚙</button>
+<div id='settings-panel'>
+  <div class='settings-row'><label>BG Color</label><input type='color' id='bg-color-picker' value='#1a2e35'></div>
+  <hr class='settings-divider'>
+  <div class='settings-row'><label>Watermark</label><input type='checkbox' id='watermark-toggle' checked></div>
+  <hr class='settings-divider'>
+  <div class='settings-btns'>
+    <button id='export-json'>Export</button>
+    <button id='import-btn'>Import</button>
+    <input type='file' id='import-file' accept='application/json,.json' hidden>
+  </div>
+  <hr class='settings-divider'>
+  <div class='settings-btns'>
+    <button id='sync-btn'>Sync with Google</button>
+    <button id='sync-off'>Disconnect</button>
+  </div>
+  <p id='sync-status'></p>
+  <hr class='settings-divider'>
+  <div class='settings-shortcuts'>
+    <p>Shortcuts</p>
+    <div class='shortcut-row'><span>New note</span><kbd>Ctrl+O</kbd></div>
+    <div class='shortcut-row'><span>Save</span><kbd>Ctrl+Enter</kbd></div>
+    <div class='shortcut-row'><span>Close</span><kbd>Ctrl+K</kbd></div>
+    <div class='shortcut-row'><span>Discard</span><kbd>Ctrl+D</kbd></div>
+  </div>
+</div>
+<div id='modal-overlay'>
+  <div id='modal'>
+    <input id='modal-heading' type='text' placeholder='Title...' spellcheck='false'>
+    <textarea id='modal-body' placeholder='Start writing...' spellcheck='false'></textarea>
+    <input id='modal-tags' type='text' placeholder='tags, comma separated' spellcheck='false'>
+    <div class='modal-actions'>
+      <button id='modal-discard'>Discard</button>
+      <div class='modal-right'>
+        <button id='modal-pin'>Pin</button>
+        <button id='modal-md'>.md</button>
+        <button id='modal-close'>Close</button>
+        <button id='modal-save' class='primary'>Save</button>
       </div>
-      <hr class="settings-divider" />
-      <div class="settings-row">
-        <label>Watermark</label>
-        <input type="checkbox" id="watermark-toggle" checked />
-      </div>
-      <hr class="settings-divider" />
-      <div class="settings-shortcuts">
-        <p>Shortcuts</p>
-        <div class="shortcut-row"><span>New note</span><kbd>Ctrl+O</kbd></div>
-        <div class="shortcut-row"><span>Save</span><kbd>Ctrl+Enter</kbd></div>
-        <div class="shortcut-row"><span>Close</span><kbd>Ctrl+K</kbd></div>
-        <div class="shortcut-row"><span>Discard</span><kbd>Ctrl+D</kbd></div>
-      </div>
     </div>
-    <div id="modal-overlay">
-      <div id="modal">
-        <input id="modal-heading" type="text" placeholder="Title..." spellcheck="false" />
-        <textarea id="modal-body" placeholder="Start writing..." spellcheck="false"></textarea>
-        <div class="modal-actions">
-          <button id="modal-discard">Discard</button>
-          <div class="modal-right">
-            <button id="modal-close">Close</button>
-            <button id="modal-save" class="primary">Save</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <script src="app.js"></script>
-  </body>
+  </div>
+</div>
+<script src='config.js'></script>
+<script src='app.js'></script>
+</body>
 </html>
